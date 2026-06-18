@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Related Scam - Educational Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card" id="screen-welcome">
+        <h1>Welcome to the Financial Scam Educational Game!</h1>
+        <p>Test your knowledge and learn how to identify and avoid financial scams.</p>
+        <button onclick="showScreen('screen-setup')">Let's Play</button>
+    </div>
+
+    <div class="card" id="screen-setup" style="display:none">
+        <h2>Game Setup</h2>
+        <p>How many players?</p>
+
+         <div class="count-selector">
+            <button class="count-btn active" onclick="selectCount(2, this)">2</button>
+            <button class="count-btn" onclick="selectCount(3, this)">3</button>
+             <button class="count-btn" onclick="selectCount(4, this)">4</button>
+        </div>
+
+        <div id="name-inputs"></div>
+        <button onclick="startGame()">Start Game →</button>
+    </div>
+
+
+    <div class="card" id="screen-game" style="display:none">
+        <div id="turn-banner">Current PLayer's turn</div>
+    
+        <div id="board">
+            <div class="square normal" id="sq-0">1</div>
+            <div class="square normal" id="sq-1">2</div>
+            <div class="square quiz"   id="sq-2">3 ❓</div>
+            <div class="square normal" id="sq-3">4</div>
+            <div class="square normal" id="sq-4">5</div>
+            <div class="square normal" id="sq-5">6</div>
+            <div class="square quiz"   id="sq-6">7 ❓</div>
+            <div class="square normal" id="sq-7">8</div>
+            <div class="square normal" id="sq-8">9</div>
+            <div class="square normal" id="sq-9">10</div>
+            <div class="square normal" id="sq-10">11</div>
+            <div class="square quiz"   id="sq-11">12 ❓</div>
+            <div class="square normal" id="sq-12">13</div>
+            <div class="square normal" id="sq-13">14</div>
+            <div class="square normal" id="sq-14">15</div>
+            <div class="square quiz"   id="sq-15">16 ❓</div>
+            <div class="square normal" id="sq-16">17</div>
+            <div class="square normal" id="sq-17">18</div>
+            <div class="square normal" id="sq-18">19</div>
+            <div class="square normal" id="sq-19">20</div>
+            <div class="square quiz"   id="sq-20">21 ❓</div>
+            <div class="square normal" id="sq-21">22</div>
+            <div class="square normal" id="sq-22">23</div>
+            <div class="square normal" id="sq-23">24</div>
+            <div class="square quiz"   id="sq-24">25 ❓</div>
+            <div class="square normal" id="sq-25">26</div>
+            <div class="square normal" id="sq-26">27</div>
+            <div class="square normal" id="sq-27">28</div>
+            <div class="square normal" id="sq-28">29</div>
+            <div class="square quiz"   id="sq-29">30 ❓</div>
+            <div class="square normal" id="sq-30">31</div>
+            <div class="square normal" id="sq-31">32</div>
+            <div class="square normal" id="sq-32">33</div>
+            <div class="square quiz"   id="sq-33">34 ❓</div>
+            <div class="square normal" id="sq-34">35</div>
+            <div class="square normal" id="sq-35">36</div>
+            <div class="square normal" id="sq-36">37</div>
+            <div class="square quiz"   id="sq-37">38 ❓</div>
+            <div class="square normal" id="sq-38">39</div>
+            <div class="square normal" id="sq-39">40</div>
+            <div class="square normal" id="sq-40">41</div>
+            <div class="square quiz"   id="sq-41">42 ❓</div>
+            <div class="square normal" id="sq-42">43</div>
+            <div class="square normal" id="sq-43">44</div>
+            <div class="square finish" id="sq-44">🏆</div>
+        </div>
+        
+        <div id="dice-area">
+            <img id="dice-face" src="images/dice-one.png" alt="dice"/>
+            <button onclick="rollDice()">Roll Dice</button>
+            <p id="dice-result"></p>
+        </div>
+
+    </div>
+
+    <div id="quiz-overlay" style="display:none">
+        <div id="quiz-box">
+            <p id="quiz-tag">💰 Financial Scam</p>
+            <p id="quiz-question">Question goes here</p>
+            <div id="quiz-choices"></div>
+            <p id="quiz-feedback"></p>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h3>What is this game?</h3>
+        <p>This is a Snake & Ladder board inspired game where you can play with 2 or up to 4 players. The goal is to reach the end while landing on special squares triggers financial scam quiz questions. Answer correctly to move ahead or you'll be sent back!</p>
+
+        <h3>How to play</h3>
+        <p>Roll the dice according to your turn and move your piece. Land on a special square to answer a quiz. 
+            <b>Correct</b> = move forward. <b>Wrong</b> = go back. First to reach square 30 wins!</p>
+    </div>
+
+    <script src = "game.js"></script>
+</body>
+</html>

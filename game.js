@@ -1,6 +1,9 @@
 /*Home Page to start screen*/
 function showScreen(id) {
-  document.querySelectorAll('.card').forEach(c => c.style.display = 'none');
+  document.getElementById('screen-welcome').style.display = 'none';
+  document.getElementById('screen-setup').style.display = 'none';
+  document.getElementById('screen-game').style.display = 'none';
+  document.getElementById('info-section').style.display = 'none';
   document.getElementById(id).style.display = 'block';
 }
 
@@ -55,6 +58,7 @@ function startGame() {
   showScreen('screen-game');
   renderPieces();
   updateTurnBanner();
+    updatePlayerList();
 }
 
 
@@ -93,16 +97,26 @@ const DICE_IMAGES = [
   'images/dice-six.png'
 ];
 
+let pendingRoll = 0;
+
 function rollDice() {
-  
   const roll = Math.floor(Math.random() * 6) + 1;
+  pendingRoll = roll;
 
   document.getElementById('dice-face').src = DICE_IMAGES[roll - 1];
-
   document.getElementById('dice-result').textContent = 'You rolled a ' + roll + '!';
 
-  
-  movePlayer(roll);
+  // Hide roll button, show move button
+  document.getElementById('move-btn').style.display = 'block';
+  event.target.style.display = 'none';
+}
+
+function confirmMove() {
+  // Hide move button, show roll button
+  document.getElementById('move-btn').style.display = 'none';
+  document.querySelector('#dice-area button[onclick="rollDice()"]').style.display = 'block';
+
+  movePlayer(pendingRoll);
 }
 
 function movePlayer(roll) {
@@ -136,6 +150,12 @@ function movePlayer(roll) {
 function nextTurn() {
   currentPlayer = (currentPlayer + 1) % players.length;
   updateTurnBanner();
+  updatePlayerList();
+
+  // Reset buttons for next player
+  document.getElementById('move-btn').style.display = 'none';
+  document.querySelector('#dice-area button[onclick="rollDice()"]').style.display = 'block';
+  document.getElementById('dice-result').textContent = '';
 }
 
 /*Quiz Questions*/
@@ -241,4 +261,20 @@ function checkAnswer(selectedIndex) {
 function closeQuiz() {
   document.getElementById('quiz-overlay').style.display = 'none';
   nextTurn();
+}
+
+function updatePlayerList() {
+  const list = document.getElementById('player-list');
+  list.innerHTML = '';
+
+  players.forEach(function(player, i) {
+    const div = document.createElement('div');
+    div.className = 'player-card' + (i === currentPlayer ? ' current-turn' : '');
+    div.innerHTML = `
+      <div class="player-card-dot" style="background:${player.color}"></div>
+      <span class="player-card-name">${player.name}</span>
+      <span class="player-card-pos">sq ${player.position + 1}</span>
+    `;
+    list.appendChild(div);
+  });
 }

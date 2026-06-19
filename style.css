@@ -1,231 +1,411 @@
-
-/* home page */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* ---- Retro dark background ---- */
 body {
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1rem;
-
-  background-image: url('images/background.png');
-  background-size: cover;
-  background-position: center;
+    font-family: 'Nunito', Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #0f0e17;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
 }
 
+/* ---- Card (welcome + setup screens only) ---- */
 .card {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  text-align: center;
+    background: #1a1a2e;
+    border: 2px solid #4f46e5;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(79,70,229,0.3);
 }
 
+/* ---- Typography ---- */
 h1 {
-  font-size: 26px;
-  color: #111827;
-  margin-bottom: 0.5rem;
+    font-family: 'Fredoka One', Arial, sans-serif;
+    font-size: 38px;
+    color: #f5d020;
+    text-shadow: 0 0 20px rgba(245,208,32,0.5);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
 }
 
 h2 {
-  font-size: 20px;
-  color: #111827;
-  margin-bottom: 0.5rem;
+    font-family: 'Fredoka One', Arial, sans-serif;
+    font-size: 26px;
+    color: #e2e8f0;
+    margin-bottom: 0.75rem;
 }
 
 p {
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 0.5rem;
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
 }
 
+/* ---- Welcome screen ---- */
+.welcome-badge {
+    display: inline-block;
+    background: rgba(245,208,32,0.15);
+    color: #f5d020;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 99px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(245,208,32,0.3);
+    letter-spacing: 0.06em;
+}
+
+.welcome-sub {
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.welcome-stats {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 99px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #cbd5e1;
+}
+
+/* ---- Buttons ---- */
 button {
-  background: #0e5fd9;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 1rem;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 13px 24px;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: 'Nunito', Arial, sans-serif;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    transition: transform 0.1s, box-shadow 0.15s;
+    letter-spacing: 0.03em;
 }
 
 button:hover {
-  background: #526bda;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79,70,229,0.5);
 }
 
-/* description below home */
-.info-section {
-  max-width: 480px;
-  width: 100%;
-  text-align: center;
-  color: white;        
+button:active { transform: translateY(0); }
+
+.btn-play {
+    background: linear-gradient(135deg, #f5d020, #f5560a);
+    color: #1a1a2e;
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 14px;
 }
 
-.info-section h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  margin-top: 1.25rem;
+.btn-play:hover {
+    box-shadow: 0 6px 24px rgba(245,208,32,0.4);
 }
 
-.info-section p {
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.85);
-}
-
-/* Start game section */
+/* ---- Setup screen ---- */
 .count-selector {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
 }
 
 .count-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 10px;
-  background: #f3f4f6;
-  color: #374151;
-  font-size: 20px;
-  font-weight: 700;
-  border: 2px solid #e5e7eb;
-  cursor: pointer;
-  width: 56px;       
-  margin-top: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    color: #cbd5e1;
+    font-size: 22px;
+    font-weight: 800;
+    border: 2px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    margin-top: 0;
+    transition: all 0.15s;
 }
 
 .count-btn:hover {
-  background: #e5e7eb;
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
 }
 
 .count-btn.active {
-  background: #0e5fd9;
-  color: white;
-  border-color: #0e5fd9;
+    background: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+    box-shadow: 0 4px 16px rgba(79,70,229,0.5);
 }
 
-
 .name-field {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
 .player-dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px currentColor;
 }
 
 .name-field input {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1.5px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.15s;
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Nunito', Arial, sans-serif;
+    font-weight: 600;
+    outline: none;
+    background: rgba(255,255,255,0.05);
+    color: #e2e8f0;
+    transition: border-color 0.15s;
 }
 
-.name-field input:focus {
-  border-color: #0e5fd9;
+.name-field input:focus { border-color: #4f46e5; }
+
+/* ---- Game screen ---- */
+#screen-game {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
-/*dice image*/
-#dice-face {
-    width: 80px;
-    height: 80px;
+#game-header {
+    text-align: center;
 }
 
-/*game screen*/
-#turn-banner {
-    font-size: 16px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 1rem;
+#header-title {
+    font-family: 'Fredoka One', Arial, sans-serif;
+    font-size: 28px;
+    color: #f5d020;
+    text-shadow: 0 0 20px rgba(245,208,32,0.4);
+    letter-spacing: 0.08em;
+}
+
+/* ---- Game area: board + side panel ---- */
+#game-area {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+/* ---- Board container ---- */
+#board-container {
+    flex: 1;
+    background: #1a1a2e;
+    border: 2px solid #312e81;
+    border-radius: 16px;
     padding: 10px;
-    background: #f3f4f6;
-    border-radius: 8px;
-    border-left: 4px solid #0e5fd9;
+    box-shadow: 0 0 40px rgba(79,70,229,0.2);
 }
 
 #board {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-    margin-bottom: 1rem;
+    gap: 5px;
+    width: 100%;
 }
 
+/* ---- Squares ---- */
 .square {
-    height: 48px;
-    border-radius: 8px;
-    background: #f3f4f6;
-    border: 1.5px solid #e5e7eb;
+    height: 58px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 11px;
-    font-weight: 700;
-    color: #6b7280;
+    font-weight: 800;
     position: relative;
+    transition: transform 0.1s;
+    cursor: default;
 }
 
-.square.quiz   { background: #E1F5EE; border-color: #1D9E75; color: #0F6E56; }
-.square.finish { background: #FEF9C3; border-color: #CA8A04; color: #713F12; }
-
-#dice-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+.square.normal:nth-child(odd) {
+    background: #1e1b4b;
+    border: 2px solid #312e81;
+    color: #818cf8;
 }
 
-#dice-face {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
+.square.normal:nth-child(even) {
+    background: #172554;
+    border: 2px solid #1e3a8a;
+    color: #60a5fa;
 }
 
-#dice-result {
-    font-size: 14px;
-    color: #6b7280;
-    font-weight: 600;
+.square.quiz {
+    background: #422006;
+    border: 2px solid #f59e0b;
+    color: #fbbf24;
+    font-size: 13px;
+    box-shadow: 0 0 10px rgba(245,158,11,0.3);
 }
 
+.square.finish {
+    background: #052e16;
+    border: 2px solid #10b981;
+    color: #34d399;
+    font-size: 20px;
+    box-shadow: 0 0 14px rgba(16,185,129,0.4);
+}
+
+.square.active-square {
+    transform: scale(1.05);
+    box-shadow: 0 0 16px rgba(245,208,32,0.6);
+}
+
+/* ---- Player pieces ---- */
 .piece {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: 1.5px solid white;
+    border: 2px solid white;
     position: absolute;
+    box-shadow: 0 0 6px currentColor;
 }
 
-/*Quizscreen*/
+/* ---- Side panel ---- */
+#side-panel {
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
+#turn-banner {
+    font-family: 'Fredoka One', Arial, sans-serif;
+    font-size: 16px;
+    color: #f5d020;
+    padding: 12px 14px;
+    background: #1a1a2e;
+    border: 2px solid #f5d020;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 16px rgba(245,208,32,0.2);
+}
+
+#player-list {
+    background: #1a1a2e;
+    border: 2px solid #312e81;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.player-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+}
+
+.player-card.current-turn {
+    background: rgba(245,208,32,0.1);
+    border: 1px solid rgba(245,208,32,0.3);
+}
+
+.player-card-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.player-card-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #e2e8f0;
+    flex: 1;
+}
+
+.player-card-pos {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* ---- Dice area ---- */
+#dice-area {
+    background: #1a1a2e;
+    border: 2px solid #312e81;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#dice-face {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    filter: drop-shadow(0 0 10px rgba(79,70,229,0.6));
+}
+
+#dice-result {
+    font-size: 13px;
+    font-weight: 800;
+    color: #f5d020;
+    min-height: 18px;
+    text-align: center;
+}
+
+#dice-area button {
+    margin-top: 0;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 13px;
+    width: 100%;
+}
+
+/* ---- Quiz popup ---- */
 #quiz-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -233,31 +413,35 @@ button:hover {
 }
 
 #quiz-box {
-    background: white;
-    border-radius: 16px;
+    background: #1a1a2e;
+    border: 2px solid #4f46e5;
+    border-radius: 20px;
     padding: 2rem;
-    max-width: 480px;
+    max-width: 460px;
     width: 90%;
     text-align: center;
+    box-shadow: 0 0 60px rgba(79,70,229,0.4);
 }
 
 #quiz-tag {
-    font-size: 12px;
-    font-weight: 700;
-    color: #0F6E56;
-    background: #E1F5EE;
-    border-radius: 99px;
-    padding: 4px 12px;
     display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    color: #fbbf24;
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.4);
+    border-radius: 99px;
+    padding: 5px 14px;
     margin-bottom: 1rem;
+    letter-spacing: 0.06em;
 }
 
 #quiz-question {
     font-size: 16px;
     font-weight: 700;
-    color: #111827;
+    color: #e2e8f0;
     margin-bottom: 1.25rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 #quiz-choices {
@@ -268,24 +452,67 @@ button:hover {
 }
 
 .choice-btn {
-    background: #f3f4f6;
-    color: #111827;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 10px;
+    background: rgba(255,255,255,0.05);
+    color: #cbd5e1;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 11px 14px;
     font-size: 14px;
+    font-weight: 700;
+    font-family: 'Nunito', Arial, sans-serif;
     cursor: pointer;
     width: 100%;
     margin-top: 0;
+    transition: all 0.15s;
+    text-align: left;
 }
 
-.choice-btn:hover  { background: #e5e7eb; }
-.choice-btn.correct { background: #E1F5EE; border-color: #1D9E75; color: #0F6E56; }
-.choice-btn.wrong   { background: #FEE2E2; border-color: #E24B4A; color: #991B1B; }
+.choice-btn:hover:not(:disabled) {
+    background: rgba(79,70,229,0.2);
+    border-color: #4f46e5;
+    color: #e2e8f0;
+    transform: translateX(4px);
+}
+
+.choice-btn.correct {
+    background: rgba(16,185,129,0.15);
+    border-color: #10b981;
+    color: #34d399;
+}
+
+.choice-btn.wrong {
+    background: rgba(239,68,68,0.15);
+    border-color: #ef4444;
+    color: #fca5a5;
+}
 
 #quiz-feedback {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     min-height: 20px;
+    line-height: 1.5;
+    color: #e2e8f0;
     margin-bottom: 0;
+}
+
+/* ---- Info section ---- */
+.info-section {
+    max-width: 960px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.info-section h3 {
+    font-family: 'Fredoka One', Arial, sans-serif;
+    font-size: 16px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    margin-top: 1.25rem;
+}
+
+.info-section p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #64748b;
 }

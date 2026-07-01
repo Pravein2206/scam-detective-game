@@ -495,6 +495,77 @@ button:active { transform: translateY(0); }
     margin-bottom: 0;
 }
 
+/* ---- Mobile layout: board on top, dice + players side by side below ---- */
+@media (max-width: 640px) {
+    #game-area {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #board-container {
+        width: 100%;
+        padding: 8px;
+    }
+
+    #board {
+        gap: 4px;
+    }
+
+    .square {
+        height: auto;
+        aspect-ratio: 1 / 1;
+        font-size: 9px;
+        border-radius: 8px;
+    }
+
+    .square.quiz {
+        font-size: 10px;
+    }
+
+    .square.finish {
+        font-size: 16px;
+    }
+
+    .piece {
+        width: 9px;
+        height: 9px;
+    }
+
+    #side-panel {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    #turn-banner {
+        flex-basis: 100%;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    #player-list {
+        flex: 1;
+        min-width: 0;
+    }
+
+    #dice-area {
+        flex: 1;
+        min-width: 0;
+        padding: 10px;
+    }
+
+    #dice-face {
+        width: 56px;
+        height: 56px;
+    }
+
+    #dice-area button {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
 /* ---- Info section ---- */
 .info-section {
     max-width: 960px;
